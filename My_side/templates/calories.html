@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Счетчик калорий</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+            integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+            crossorigin="anonymous">
+    </script>
+    <style>
+        .shadowbox {
+        width: 15em
+        border: 1px solid #333
+        box-shadow: 8px 8px 5px #444
+        padding: 8px 12px
+        background-image: liner-gradient(180deg, #fff, #ddd 40%, #ccc);}
+
+
+
+
+
+    </style>
+</head>
+<body style="background-image : url(https://wallpaperaccess.com/full/1537562.png);
+ background-attachment: fixed">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary" style="height: 20mm;">
+    <div class="container">
+        <a class="navbar-brand fs-2" href="/">Proper nutrition</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle  fs-5" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Питание
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="breakfast">Завтрак</a></li>
+                        <li><a class="dropdown-item" href="lanch">Обед</a></li>
+                        <li><a class="dropdown-item" href="dinner">Ужин</a></li>
+                    </ul>
+                </li>
+                <a class="nav-link fs-5" href="table_calories">Таблицы калорийности продуктов</a>
+                <a class="nav-link fs-5 active" href="calories">Счетчик суточной калорийности</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container my-5">
+    <h1 class="p-3 mb-2 bg-info text-dark border" style="border-radius: 10mm;"> Как правильно уменьшать суточную
+        калорийность
+        для похудения?</h1>
+    <h2 class="p-2 mb-2 col-8 bg-info" style="border-radius: 8mm;">
+        Формула Харрисона-Бенедикта расчет калорийности
+    </h2>
+    <p class="fs-4 p-2 text-dark bg-info" style="border-radius: 8mm;">Формула была выведена американским физиологом
+        Фрэнсисом Гано Бенедиктом и
+        ботаником Джеймсом Артуром Харрисом еще в начале прошлого века,
+        но до сих пор остается актуальной. Имеет погрешность около 5%.</p>
+    <div class="col-md-5">
+        <span class="my-3 fs-3 text-danger fw-bold">{{ ERROR }}</span>
+        <p class="fs-4 p-2 bg-warning" style="border-radius: 5mm;">Суточная калорийность составляет:
+            <span class="mx-3 fs-3">{{ RESULT }}</span></p>
+        <form action="{{ url_for('calories') }}" method="post">
+            <div class="form-floating ">
+                <select class="form-select mb-3 " id="floatingSelect" aria-label="Default select example" name="value">
+                    <option class="align-middle" selected>Выберите пол</option>
+                    <option value="м"> ♂ мужской</option>
+                    <option value="ж"> ♀ женский</option>
+                </select>
+                <!--<input type="text" class="form-control" name="floor">
+                <label>Введите свой пол(м/ж):</label>-->
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="weight">
+                <label>Введите свой вес в кг:</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="growth">
+                <label>Введите свой рост в см:</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="age">
+                <label>Введите свой возраст в годах:</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="activity">
+                <label>Введите (КФА):</label>
+                <div id="passwordHelpBlock" class="form-text text-dark bg-warning p-2" style="border-radius: 3mm;">
+                    Коэффициент физической активности(КФА) 1.3-низкая,
+                    1.5-умеренная, 1.7-высокая, 1.9-экстремальная
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="btn btn-primary btn-lg center" type="submit" value="Посчитать">
+            </div>
+        </form>
+    </div>
+    <div>
+        <p class="fs-4 p-2 bg-info mb-2" style="border-radius: 7mm;">Для гармоничного и безопасного похудения
+            рекомендуется
+            снизить калорийность рациона с
+            учетом физической активности на 10-15% (на 20% при сильном ожирении).
+            ВОЗ рекомендует сокращать питание на 500 ккал в месяц от реального рациона, пока калорийность не станет ниже
+            суточной потребности на 300-500 ккал.
+            Уменьшение суточной нормы на 500 ккал в день приводит к потере примерно 500 гр жировой массы в неделю. Через
+            полгода такого похудения или при достижении идеального веса суточную норму калорий рекомендуется пересчитать
+            с учетом новых показателей.</p>
+        <p class="fs-5 p-2 bg-danger md-3 text-white" style="border-radius: 7mm;">
+            Не стоит максимально урезать калорийность рациона для более эффективного похудения. Физиологичной и
+            безопасной для здоровья считается потеря 250-500 гр в неделю. Превышение этих цифр означает потерю мышц и
+            жидкости.
+        </p>
+
+
+    </div>
+</div>
+
+</body>
+</html>

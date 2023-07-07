@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Таблицы калорийности</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+            integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+            crossorigin="anonymous">
+    </script>
+</head>
+<body style="background-image: url(https://cdn.lifehacker.ru/wp-content/uploads/2022/03/Gid-po-zdorovomu-pitaniyu-dlya-novichkov_1556888050_1647237031.jpg);
+background-attachment: fixed">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="height: 20mm; background: #ac05fa;">
+    <div class="container">
+        <a class="navbar-brand fs-3" href="/">Proper nutrition</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle  fs-5" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Питание
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="breakfast">Завтрак</a></li>
+                        <li><a class="dropdown-item" href="lanch">Обед</a></li>
+                        <li><a class="dropdown-item" href="dinner">Ужин</a></li>
+                    </ul>
+                </li>
+                <a class="nav-link fs-5 active" href="table_calories">Таблицы калорийности продуктов</a>
+                <a class="nav-link fs-5 " href="calories">Счетчик суточной калорийности</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="bg-warning rounded-5">
+        <h1 class="text-center ">Калорийность продуктов</h1>
+        <p class="text-center fw-semibold fs-4">(на 100 грамм продукта)</p>
+    </div>
+    <div class="my-5">
+        <h3 class="bg-warning rounded-4 p-1">Мясо</h3>
+        <table class="table border border-5 border-primary fs-5 bg-info">
+            <tr>
+                {% for i in TITLE %}
+                <th>{{ i }}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in MEET %}
+                <td>{{ i[0] }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in MEET %}
+                <td>{{ i[1] }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in MEET %}
+                <td>{{ i[2] }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in MEET %}
+                <td>{{ i[3] }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in MEET %}
+                <td>{{ i[4] }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in MEET %}
+                <td>{{ i[5] }}</td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+    <div class="my-5">
+        <h3 class="bg-warning rounded-4 p-1">Птица</h3>
+        <table class="table border border-5 border-primary fs-5 bg-info">
+            <tr>
+                {% for i in TITLE %}
+                <th>{{ i }}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in CHICKEN %}
+                <td>{{ i[0] }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in CHICKEN %}
+                <td>{{ i[1] }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in CHICKEN %}
+                <td>{{ i[2] }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in CHICKEN %}
+                <td>{{ i[3] }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in CHICKEN %}
+                <td>{{ i[4] }}</td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+    <div class="my-5">
+        <h3 class="bg-warning rounded-4 p-1">Рыба</h3>
+        <table class="bg-info table border border-5 border-primary fs-5">
+            <tr>
+                {% for i in TITLE %}
+                <th>{{ i }}</th>
+                {% endfor %}
+            </tr>
+            {% for i in range(0,15)%}
+            <tr>
+                <td>{{ FISH[0][i] }}</td>
+                <td>{{ FISH[1][i] }}</td>
+                <td>{{ FISH[2][i] }}</td>
+                <td>{{ FISH[3][i] }}</td>
+                <td>{{ FISH[4][i] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="my-5">
+        <h3 class="bg-warning rounded-4 p-1">Яйца</h3>
+        <table class=" bg-info table border border-5 border-primary fs-5">
+            <tr>
+                {% for i in TITLE %}
+                <th>{{ i }}</th>
+                {% endfor %}
+            </tr>
+            {% for i in range(0,5)%}
+            <tr>
+                <td>{{ AGG[0][i] }}</td>
+                <td>{{ AGG[1][i] }}</td>
+                <td>{{ AGG[2][i] }}</td>
+                <td>{{ AGG[3][i] }}</td>
+                <td>{{ AGG[4][i] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="my-5">
+        <h3 class="bg-warning rounded-4 p-1">Молочные продукты</h3>
+        <table class="bg-info table border border-5 border-primary fs-5">
+            <tr>
+                {% for i in TITLE %}
+                <th>{{ i }}</th>
+                {% endfor %}
+            </tr>
+            {% for i in range(0,26)%}
+            <tr>
+                <td>{{ MILK[0][i] }}</td>
+                <td>{{ MILK[1][i] }}</td>
+                <td>{{ MILK[2][i] }}</td>
+                <td>{{ MILK[3][i] }}</td>
+                <td>{{ MILK[4][i] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="my-5">
+        <h3 class="bg-warning rounded-4 p-1">Крупы</h3>
+        <table class="bg-info table border border-5 border-primary fs-5">
+            <tr>
+                {% for i in TITLE %}
+                <th>{{ i }}</th>
+                {% endfor %}
+            </tr>
+            {% for i in range(0,9)%}
+            <tr>
+                <td>{{ CEREALS[0][i] }}</td>
+                <td>{{ CEREALS[1][i] }}</td>
+                <td>{{ CEREALS[2][i] }}</td>
+                <td>{{ CEREALS[3][i] }}</td>
+                <td>{{ CEREALS[4][i] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="my-5">
+        <h3 class="bg-warning rounded-4 p-1">Хлебобулочные изделия</h3>
+        <table class="bg-info table border border-5 border-primary fs-5">
+            <tr>
+                {% for i in TITLE %}
+                <th>{{ i }}</th>
+                {% endfor %}
+            </tr>
+            {% for i in range(0,9)%}
+            <tr>
+                <td>{{ BREAD[0][i] }}</td>
+                <td>{{ BREAD[1][i] }}</td>
+                <td>{{ BREAD[2][i] }}</td>
+                <td>{{ BREAD[3][i] }}</td>
+                <td>{{ BREAD[4][i] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="my-5">
+        <h3 class="bg-warning rounded-4 p-1">Овощи</h3>
+        <table class="bg-info table border border-5 border-primary fs-5">
+            <tr>
+                {% for i in TITLE %}
+                <th>{{ i }}</th>
+                {% endfor %}
+            </tr>
+            {% for i in range(0,15)%}
+            <tr>
+                <td>{{ VEGETABLES[0][i] }}</td>
+                <td>{{ VEGETABLES[1][i] }}</td>
+                <td>{{ VEGETABLES[2][i] }}</td>
+                <td>{{ VEGETABLES[3][i] }}</td>
+                <td>{{ VEGETABLES[4][i] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="my-5">
+        <h3 class="bg-warning rounded-4 p-1">Фрукты</h3>
+        <table class="bg-info table border border-5 border-primary fs-5">
+            <tr>
+                {% for i in TITLE %}
+                <th>{{ i }}</th>
+                {% endfor %}
+            </tr>
+            {% for i in range(0,12)%}
+            <tr>
+                <td>{{ FRUIT[0][i] }}</td>
+                <td>{{ FRUIT[1][i] }}</td>
+                <td>{{ FRUIT[2][i] }}</td>
+                <td>{{ FRUIT[3][i] }}</td>
+                <td>{{ FRUIT[4][i] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="my-5">
+        <h3 class="bg-warning rounded-4 p-1">Зелень</h3>
+        <table class="bg-info table border border-5 border-primary fs-5">
+            <tr>
+                {% for i in TITLE %}
+                <th>{{ i }}</th>
+                {% endfor %}
+            </tr>
+            {% for i in range(0,8)%}
+            <tr>
+                <td>{{ GREENS[0][i] }}</td>
+                <td>{{ GREENS[1][i] }}</td>
+                <td>{{ GREENS[2][i] }}</td>
+                <td>{{ GREENS[3][i] }}</td>
+                <td>{{ GREENS[4][i] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="my-5">
+        <h3 class="bg-warning rounded-4 p-1">Ягоды</h3>
+        <table class="bg-info table border border-5 border-primary fs-5">
+            <tr>
+                {% for i in TITLE %}
+                <th>{{ i }}</th>
+                {% endfor %}
+            </tr>
+            {% for i in range(0,10)%}
+            <tr>
+                <td>{{ BERRIES[0][i] }}</td>
+                <td>{{ BERRIES[1][i] }}</td>
+                <td>{{ BERRIES[2][i] }}</td>
+                <td>{{ BERRIES[3][i] }}</td>
+                <td>{{ BERRIES[4][i] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
